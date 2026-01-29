@@ -148,6 +148,11 @@ static PyObject* py_hako_asset_simulation_time(PyObject*, PyObject*) {
 
     return PyLong_FromLongLong(sim_time);
 }
+static PyObject* py_hako_asset_current_time(PyObject*, PyObject*) {
+    hako_time_t sim_time = hako_asset_current_time();
+
+    return PyLong_FromLongLong(sim_time);
+}
 static PyObject* py_hako_asset_usleep(PyObject*, PyObject* args) {
     hako_time_t sleep_time_usec;
 
@@ -261,6 +266,7 @@ static PyMethodDef hako_asset_python_methods[] = {
     {"pdu_create", py_hako_asset_pdu_create, METH_VARARGS, "Create PDU data for the specified robot name and channel ID."},
     {"start", py_hako_asset_start, METH_VARARGS, "Start the asset."},
     {"simulation_time", py_hako_asset_simulation_time, METH_NOARGS, "Get the current simulation time."},
+    {"asset_current_time", py_hako_asset_current_time, METH_NOARGS, "Get the current asset time."},
     {"usleep", py_hako_asset_usleep, METH_VARARGS, "Sleep for the specified time in microseconds."},
     {"pdu_read", py_hako_asset_pdu_read, METH_VARARGS, "Read PDU data for the specified robot name and channel ID."},
     {"pdu_write", py_hako_asset_pdu_write, METH_VARARGS, "Write PDU data for the specified robot name and channel ID."},

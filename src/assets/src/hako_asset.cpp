@@ -138,3 +138,11 @@ int hako_asset_usleep(hako_time_t sleep_time_usec) {
     }
     return EINTR;
 }
+
+hako_time_t hako_asset_current_time(void) {
+    return hako_asset_impl_get_asset_current_time();
+}
+
+bool hako_asset_check_running(void) {
+    return (HakoSim_Running == hako_asset_impl_state());
+}
